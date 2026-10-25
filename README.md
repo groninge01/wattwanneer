@@ -27,6 +27,21 @@ One shared request runs at setup and twice daily at 06:00 and 18:00 in Home Assi
 
 Feed timestamps are local clock labels. The integration matches the current date and hour in **Europe/Amsterdam**, automatically using CET or CEST, regardless of HA's configured timezone. Each source entry remains a single entry; no hours are synthesized or removed. The raw timestamp strings remain unchanged in the forecast attribute.
 
+## Stored forecast history
+
+Every successful refresh archives all price rows for each new `generated_at` value in
+`<config>/.storage/wattwanneer_public.forecast_history`. Home Assistant's storage file
+contains a `data` object mapping each full generation timestamp to its rows, including
+prices, hourly timestamps, sources, and other feed fields. Different generation times
+on the same date are stored separately. Repeated generations keep their first snapshot
+without adding duplicates or overwriting prices. Rows without a non-empty string
+`generated_at` remain available to sensors but are not archived.
+
+History survives restarts and is retained without automatic expiry, independently of
+recorder retention. Collection starts when this version is installed; only generations
+observed during a refresh can be saved. Sensors continue to show the latest feed.
+If saving history fails, the refresh fails and the next refresh retries the archive.
+
 ## Forecast chart
 
 With ApexCharts Card installed, replace the entity ID below with your actual Forecast average entity ID:
