@@ -1,0 +1,17 @@
+{
+  "title": "WattWanneer Public",
+  "config": {
+    "step": {
+      "user": {
+        "title": "WattWanneer Public",
+        "description": "Read the public seven-day price forecast. No API key is required. Prices exclude taxes and supplier fees."
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot read the public forecast. Please try again."
+    },
+    "abort": {
+      "already_configured": "WattWanneer Public is already configured."
+    }
+  }
+}

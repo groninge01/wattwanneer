@@ -1,0 +1,15 @@
+{
+  "domain": "wattwanneer_public",
+  "name": "WattWanneer Public",
+  "codeowners": [
+    "@groninge01"
+  ],
+  "config_flow": true,
+  "documentation": "https://github.com/groninge01/wattwanneer",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "requirements": [],
+  "single_config_entry": true,
+  "version": "0.1.0",
+  "issue_tracker": "https://github.com/groninge01/wattwanneer/issues"
+}

@@ -1,0 +1,17 @@
+{
+  "title": "WattWanneer Public",
+  "config": {
+    "step": {
+      "user": {
+        "title": "WattWanneer Public",
+        "description": "Lees de openbare stroomprijsvoorspelling voor zeven dagen. Geen API-key nodig. Prijzen zijn exclusief belastingen en leverancierskosten."
+      }
+    },
+    "error": {
+      "cannot_connect": "De openbare voorspelling kan niet worden opgehaald. Probeer het opnieuw."
+    },
+    "abort": {
+      "already_configured": "WattWanneer Public is al ingesteld."
+    }
+  }
+}
