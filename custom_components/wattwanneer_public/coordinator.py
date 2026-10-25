@@ -1,8 +1,7 @@
-"""Fetch the public feed once per hour for all entities."""
+"""Fetch the public feed for all entities."""
 
 import asyncio
 import logging
-from datetime import timedelta
 
 from aiohttp import ClientError
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -21,7 +20,6 @@ class WattWanneerCoordinator(DataUpdateCoordinator):
             _LOGGER,
             name=NAME,
             config_entry=entry,
-            update_interval=timedelta(hours=1),
         )
         self.session = async_get_clientsession(hass)
 

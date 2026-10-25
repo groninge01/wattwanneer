@@ -23,7 +23,7 @@ The repository includes HACS validation and hassfest workflows. GitHub repositor
 
 All prices are EUR/kWh, as supplied in `price_eur_kwh`, excluding taxes and supplier fees. The integration preserves negative and zero prices. The `source` field distinguishes published day-ahead prices from model predictions. Forecasts are predictions, not guaranteed future tariffs.
 
-One shared request runs at setup and once per hour, with a 30-second timeout. Entities also update at each hour boundary without an additional request. A failed refresh makes sensors unavailable until a successful refresh. A missing current or tomorrow price makes only the affected sensors unavailable. Feed generation time is exposed as `generated_at`; an older generation may still contain valid hours. No prices are extrapolated beyond the feed.
+One shared request runs at setup and twice daily at 06:00 and 18:00 in Home Assistant's configured time zone, with a 30-second timeout. Entities also update at each hour boundary without an additional request. A failed refresh makes sensors unavailable until a successful refresh. A missing current or tomorrow price makes only the affected sensors unavailable. Feed generation time is exposed as `generated_at`; an older generation may still contain valid hours. No prices are extrapolated beyond the feed.
 
 Feed timestamps are local clock labels. The integration matches the current date and hour in **Europe/Amsterdam**, automatically using CET or CEST, regardless of HA's configured timezone. Each source entry remains a single entry; no hours are synthesized or removed. The raw timestamp strings remain unchanged in the forecast attribute.
 
