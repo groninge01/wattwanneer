@@ -1,9 +1,6 @@
 {
   "domain": "wattwanneer_public",
   "name": "WattWanneer Public",
-  "categories": [
-    "energy.energy_prices"
-  ],
   "codeowners": [
     "@groninge01"
   ],
