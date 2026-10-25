@@ -22,5 +22,9 @@ manifest.update(
     documentation="https://github.com/" + args.repository,
     issue_tracker="https://github.com/" + args.repository + "/issues",
 )
+# hassfest requires domain and name first, then all remaining keys alphabetically.
+manifest = {
+    key: manifest[key] for key in ["domain", "name", *sorted(set(manifest) - {"domain", "name"})]
+}
 path.write_text(json.dumps(manifest, indent=2) + "\n")
 print("HACS publishing metadata configured for " + args.repository)
