@@ -5,11 +5,12 @@
     "@groninge01"
   ],
   "config_flow": true,
+  "dependencies": ["http"],
   "documentation": "https://github.com/groninge01/wattwanneer",
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/groninge01/wattwanneer/issues",
   "requirements": [],
   "single_config_entry": true,
-  "version": "0.2.0"
+  "version": "0.3.0"
 }

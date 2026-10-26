@@ -3,9 +3,16 @@
 from homeassistant.const import Platform
 from homeassistant.helpers.event import async_track_time_change
 
+from .api import ForecastHistoryView
 from .coordinator import WattWanneerCoordinator
 
 PLATFORMS = [Platform.SENSOR]
+
+
+async def async_setup(hass, config):
+    """Register the archive API once, independently of feed refreshes."""
+    hass.http.register_view(ForecastHistoryView(hass))
+    return True
 
 
 async def async_setup_entry(hass, entry):

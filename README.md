@@ -42,6 +42,40 @@ recorder retention. Collection starts when this version is installed; only gener
 observed during a refresh can be saved. Sensors continue to show the latest feed.
 If saving history fails, the refresh fails and the next refresh retries the archive.
 
+### Read stored history through the Home Assistant API
+
+After updating the integration and restarting Home Assistant, use
+`GET /api/wattwanneer_public/forecast_history` with a Home Assistant access token:
+
+```bash
+curl --fail --silent --show-error \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  http://homeassistant.local:8123/api/wattwanneer_public/forecast_history
+```
+
+Create a long-lived access token in your Home Assistant profile's Security tab.
+The endpoint requires authentication and returns all persisted generations, without
+fetching the feed or depending on a successful current refresh:
+
+```json
+{
+  "data": {
+    "2026-10-25 06:00": [
+      {
+        "generated_at": "2026-10-25 06:00",
+        "datetime": "2026-10-26 12:00",
+        "price_eur_kwh": 0.12,
+        "source": "prediction"
+      }
+    ]
+  }
+}
+```
+
+All stored row fields are preserved. An archive that has not been created yet
+returns `{"data": {}}`. Storage read errors return HTTP 500. This archive is
+independent of Home Assistant's recorder history API and retention settings.
+
 ## Forecast chart
 
 With ApexCharts Card installed, replace the entity ID below with your actual Forecast average entity ID:
